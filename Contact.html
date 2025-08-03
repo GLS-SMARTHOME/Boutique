@@ -329,10 +329,26 @@
     window.addEventListener('scroll', onScrollFadeIn);
     window.addEventListener('load', onScrollFadeIn);
 
+    
+    const sidebar = document.getElementById('sidebar');
+    const hamburger = document.getElementById('hamburgerBtn');
+
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+
+    // Optional: click outside sidebar to close (for mobile UX)
+    window.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+
   </script>
 
 </body>
 </html>
+
 
 
 
