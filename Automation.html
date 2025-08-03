@@ -55,6 +55,36 @@
       color: #333;
       cursor: pointer;
     }
+    
+    /* Sidebar for mobile */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 220px;
+      height: 100%;
+      background: #fff;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.15);
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 20px;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+
+    .sidebar a:hover {
+      background-color: #f0f0f0;
+    }
 
     /* Product Section */
     .product-container {
@@ -261,3 +291,4 @@
 
 </body>
 </html>
+
