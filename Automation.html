@@ -275,6 +275,22 @@
 
   <!-- JS: Image switching and zoom -->
   <script>
+    
+    const sidebar = document.getElementById('sidebar');
+    const hamburger = document.getElementById('hamburgerBtn');
+
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+
+    // Optional: click outside sidebar to close (for mobile UX)
+    window.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+
+    
     const mainImage = document.getElementById('mainImage');
     const thumbnails = document.querySelectorAll('.thumb');
     const lightbox = document.getElementById('lightbox');
@@ -300,6 +316,7 @@
 
 </body>
 </html>
+
 
 
 
