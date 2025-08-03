@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome to GLS car rental </title>
+  <title>Détail Produit - GLS STORE</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -41,9 +39,15 @@
       text-align: center;
     }
 
-    .icon-left {
-      color: #4CAF50;
-      font-size: 1.5em;
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
     }
 
     .hamburger {
@@ -51,7 +55,7 @@
       color: #333;
       cursor: pointer;
     }
-
+    
     /* Sidebar for mobile */
     .sidebar {
       position: fixed;
@@ -81,50 +85,86 @@
     .sidebar a:hover {
       background-color: #f0f0f0;
     }
+.collections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
 
-    /* Collection Layout */
-    .collections {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      padding: 20px;
-    }
+.product-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 300px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s;
+}
 
-    .product-card {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 300px;
-      padding: 15px;
-      text-align: center;
-      transition: transform 0.2s;
-    }
+.product-card:hover {
+  transform: scale(1.03);
+}
 
-    .product-card:hover {
-      transform: scale(1.03);
-    }
+.product-image {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  cursor: zoom-in;
+}
 
-    .product-image {
-      width: 100%;
-      height: 150px;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
+.product-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 10px 0 5px 0;
+  color: #222;
+}
 
-    .product-name {
-      font-weight: bold;
-      font-size: 1.1em;
-      margin: 10px 0 5px 0;
-      color: #222;
-    }
+.product-desc {
+  font-size: 0.9em;
+  color: #555;
+  min-height: 40px;
+}
+    
+    .product-price {
+  color: red;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 0.5em;
+}
 
-    .product-desc {
-      font-size: 0.9em;
-      color: #555;
-      min-height: 40px;
-    }
+
+/* Lightbox fullscreen zoom */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    max-width: 95%;
+  }
+}
 
     /* WhatsApp Floating */
     .whatsapp-float {
@@ -148,27 +188,6 @@
       background-color: #20b358;
     }
 
-    /* Cart Floating Button */
-    .cart-float {
-      position: fixed;
-      bottom: 150px;
-      right: 20px;
-      background-color: #ff9800;
-      color: white;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 22px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 999;
-    }
-
-    .cart-float:hover {
-      background-color: #e68900;
-    }
     /* Footer */
     footer {
       text-align: center;
@@ -188,67 +207,91 @@
     .social-icons a:hover {
       color: #000;
     }
+
+    @media (max-width: 600px) {
+      .product-title { font-size: 1.3em; }
+      .product-price { font-size: 1.1em; }
+    }
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <i class="fas fa-store icon-left"></i>
-    <div class="header-content">Nos Collections</div>
+    <a href="https://gls-smarthome.github.io/Boutique/Accueil" class="logo-link">
+  <img src="https://imgur.com/hC14VSz.png" alt="GLS Logo" class="logo-img" />
+</a>
+    <div class="header-content">GLS SMARTHOME</div>
     <i class="fas fa-bars hamburger" id="hamburgerBtn"></i>
   </header>
-
+  
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
-  <a href="https://glswifi.github.io/kinfood/MainPage">Accueil</a>
-  <a href="https://glswifi.github.io/kinfood/Clothing">Habillement</a>
-  <a href="https://glswifi.github.io/kinfood/Electronic">Électronique</a>
-  <a href="https://glswifi.github.io/kinfood/Contact">Contact</a>
+  <a href="https://gls-smarthome.github.io/Boutique/Accueil">Accueil</a>
+  <a href="https://gls-smarthome.github.io/Boutique/Automation">Automation</a>
+  <a href="https://gls-smarthome.github.io/Boutique/Security">Sécurité</a>
+  <a href="https://gls-smarthome.github.io/Boutique/Electronic">Electronique</a>
+  <a href="https://gls-smarthome.github.io/Boutique/Contact">Contact</a>
 </div>
-
-  <!-- Main Content -->
-  <div class="collections">
-    <div class="product-card">
-      <a href="https://glswifi.github.io/kinfood/Clothing">
-        <img class="product-image" src="https://i.imgur.com/Tiodx4b.jpg" alt="Habillement" />
-      </a>
-      <div class="product-name">Habillement</div>
-      <div class="product-desc">Les événements les plus formels, costume de ville trois pièces avec une chemise unie et une cravate.</div>
-    </div>
-
-    <div class="product-card">
-      <a href="https://glswifi.github.io/kinfood/Electronic">
-        <img class="product-image" src="https://imgur.com/yZoXKyX.jpg" alt="Électronique" />
-      </a>
-      <div class="product-name">Appareils électroniques</div>
-      <div class="product-desc">Télévision, lecteur DVD, appareil photo, ordinateur, téléphone, photocopieur, projecteur…</div>
-    </div>
+<!-- Section produits avec zoom -->
+<div class="collections">
+  <!-- Produit 1 -->
+  <div class="product-card">
+    <img class="product-image zoomable" src="https://imgur.com/rhwM7vD.jpg" alt="Produit 1" />
+    <div class="product-name">Contrôleur Intelligent</div>
+    <p class="product-price">Prix: <strong>25 $</strong></p>
+    <div class="product-desc">Kit Automation pour controler un circuit, installation gratuite.  1 interrupteur intélligent + 1 module. Fonctionnement sans internet</div>
   </div>
 
-  <!-- Cart Floating Button -->
-  <a class="cart-float" href="https://glswifi.github.io/kinfood/Cart" title="Voir le panier">
-    <i class="fas fa-shopping-cart"></i>
-  </a>
+  <!-- Produit 2 -->
+  <div class="product-card">
+    <img class="product-image zoomable" src="https://imgur.com/IQHhLQ9.jpg" alt="Maison connecteé" />
+    <div class="product-name">Caméra de Sécurité</div>
+    <p class="product-price">Prix: <strong>A partir de 100 $</strong></p>
+    <div class="product-desc">Kit Automation pour controler une maison, installation gratuite.  4 interrupteurs intelligents(pour lumiéries) + 2 modules controlant: TV + AC. Fonctionnement sans internet</div>
+  </div></div>
+  </div>
+
+  <!-- Produit 3 -->
+  <div class="product-card">
+    <img class="product-image zoomable" src="https://imgur.com/WnulU2B.jpg" alt="Interrupteur" />
+    <div class="product-name">Kit Interrupteur va-et-vient sans fil</div>
+    <p class="product-price">Prix: <strong>A partir de 10 $</strong></p>
+    <div class="product-desc">La lumière peut être allumée ou éteinte depuis deux endroits différents (en haut et en bas de l'escalier) grâce à des interrupteurs va-et-vient. sans fil.</div>
+  </div>
+
+  <!-- Produit 4 -->
+  <div class="product-card">
+    <img class="product-image zoomable" src="https://imgur.com/CYUFCV5.jpg" alt="Détecteur de gaz" />
+    <div class="product-name">Interrupteur intelligent </div>
+    <p class="product-price">Prix: <strong>A partir de 5 $</strong></p>
+    <div class="product-desc">Ce interrupteur permet le contrôle des modules(lumieres et autres...)</div>
+  </div>
+</div>
+
+<!-- Lightbox (zoom image full screen) -->
+<div class="lightbox" id="lightbox">
+  <img src="" alt="Zoom produit" id="zoomedImage" />
+</div>
 
   <!-- WhatsApp Button -->
   <a class="whatsapp-float" href="https://wa.me/243829353222" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-<!-- Footer -->
-<footer>
-  <div class="social-icons">
-    <a href="https://facebook.com/yourpage" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-    <a href="https://instagram.com/yourpage" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://tiktok.com/@yourpage" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-  </div>
-  <h5>&copy; 2025 par GLS SMARTHOME Tous droits réservés.</h5>
-</footer>
+  <!-- Footer -->
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/glssmarthome/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/gls.smarthome2022" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@gls_smarthome" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <h5>&copy; 2025 par GLS SMARTHOME Tous droits réservés.</h5>
+  </footer>
 
-
-  <!-- Sidebar Toggle Script -->
+  <!-- JS: Image switching and zoom -->
   <script>
+    
     const sidebar = document.getElementById('sidebar');
     const hamburger = document.getElementById('hamburgerBtn');
 
@@ -262,7 +305,30 @@
         sidebar.classList.remove('open');
       }
     });
+
+  const lightbox = document.getElementById('lightbox');
+  const zoomedImage = document.getElementById('zoomedImage');
+  const zoomables = document.querySelectorAll('.zoomable');
+
+  zoomables.forEach(img => {
+    img.addEventListener('click', () => {
+      zoomedImage.src = img.src;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+</script>
+
   </script>
 
 </body>
 </html>
+
+
+
+
+
+
