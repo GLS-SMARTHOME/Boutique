@@ -85,86 +85,7 @@
     .sidebar a:hover {
       background-color: #f0f0f0;
     }
-.collections {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  padding: 20px;
-}
 
-.product-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 300px;
-  padding: 15px;
-  text-align: center;
-  transition: transform 0.2s;
-}
-
-.product-card:hover {
-  transform: scale(1.03);
-}
-
-.product-image {
-  width: 100%;
-  max-height: 220px;
-  object-fit: contain;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  cursor: zoom-in;
-}
-
-.product-name {
-  font-weight: bold;
-  font-size: 1.1em;
-  margin: 10px 0 5px 0;
-  color: #222;
-}
-
-.product-desc {
-  font-size: 0.9em;
-  color: #555;
-  min-height: 40px;
-}
-    
-    .product-price {
-  color: red;
-  font-weight: bold;
-  font-size: 1.2em;
-  margin-top: 0.5em;
-}
-
-
-/* Lightbox fullscreen zoom */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  box-shadow: 0 0 20px rgba(255,255,255,0.3);
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-@media (max-width: 600px) {
-  .product-card {
-    max-width: 95%;
-  }
-}
 
     /* WhatsApp Floating */
     .whatsapp-float {
@@ -212,6 +133,120 @@
       .product-title { font-size: 1.3em; }
       .product-price { font-size: 1.1em; }
     }
+    
+    .about-us {
+      background-color: #fff;
+      padding: 2em 1em;
+      margin: 2em 0;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about-us:hover {
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .about-us h2 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    .about-us p {
+      font-size: 1em;
+      color: #555;
+      margin-bottom: 1em;
+      padding: 0 1em;
+    }
+
+    .about-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 1.5em;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .fade-in-effect {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in-effect.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      .about-us-content {
+        display: flex;
+        align-items: center;
+        gap: 2em;
+        padding: 1em;
+      }
+
+      .about-us-text {
+        flex: 1;
+        text-align: left;
+      }
+
+      .about-us-image-wrapper {
+        flex: 1;
+        text-align: center;
+      }
+    }
+
+    /* Contact form */
+    .contact-form {
+      background-color: #fff;
+      padding: 2em 1em;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: 2em auto;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-form h3 {
+      text-align: center;
+      margin-bottom: 1em;
+      font-size: 1.5em;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.8em;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      background-color: #e60000;
+      color: #fff;
+      padding: 0.9em;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #c40000;
+    }
   </style>
 </head>
 <body>
@@ -225,6 +260,37 @@
     <i class="fas fa-bars hamburger" id="hamburgerBtn"></i>
   </header>
   
+  <!-- About Us Section -->
+  <section class="about-us fade-in-effect">
+    <div class="about-us-content">
+      <div class="about-us-image-wrapper">
+        <img src="https://via.placeholder.com/500x300?text=Notre+Équipe" alt="Équipe GLS" class="about-image" />
+      </div>
+      <div class="about-us-text">
+        <h2>À propos de nous</h2>
+        <p>
+          Bienvenue chez <strong>GLS STORE</strong> – votre destination en ligne pour des produits de qualité à prix abordables. 
+          Notre mission est de proposer des articles sélectionnés avec soin, alliant style, utilité et satisfaction client.
+        </p>
+        <p>
+          Fondée avec passion, notre équipe s'efforce de fournir un service rapide, fiable et personnalisé.
+          Que vous soyez à la recherche de nouveautés, de bonnes affaires ou d'inspiration, vous êtes au bon endroit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="contact-form fade-in-effect">
+    <h3>Envoyez-nous un message</h3>
+    <form action="#" method="post">
+      <input type="text" name="name" placeholder="Votre nom" required />
+      <input type="email" name="email" placeholder="Votre adresse e-mail" required />
+      <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
   <a href="https://gls-smarthome.github.io/Boutique/Accueil">Accueil</a>
@@ -232,46 +298,6 @@
   <a href="https://gls-smarthome.github.io/Boutique/Security">Sécurité</a>
   <a href="https://gls-smarthome.github.io/Boutique/Electronic">Electronique</a>
   <a href="https://gls-smarthome.github.io/Boutique/Contact">Contact</a>
-</div>
-<!-- Section produits avec zoom -->
-<div class="collections">
-  <!-- Produit 1 -->
-  <div class="product-card">
-    <img class="product-image zoomable" src="https://imgur.com/rhwM7vD.jpg" alt="Produit 1" />
-    <div class="product-name">Contrôleur Intelligent</div>
-    <p class="product-price">Prix: <strong>25 $</strong></p>
-    <div class="product-desc">Kit Automation pour controler un circuit, installation gratuite.  1 interrupteur intélligent + 1 module. Fonctionnement sans internet</div>
-  </div>
-
-  <!-- Produit 2 -->
-  <div class="product-card">
-    <img class="product-image zoomable" src="https://imgur.com/IQHhLQ9.jpg" alt="Maison connecteé" />
-    <div class="product-name">Caméra de Sécurité</div>
-    <p class="product-price">Prix: <strong>A partir de 100 $</strong></p>
-    <div class="product-desc">Kit Automation pour controler une maison, installation gratuite.  4 interrupteurs intelligents(pour lumiéries) + 2 modules controlant: TV + AC. Fonctionnement sans internet</div>
-  </div></div>
-  </div>
-
-  <!-- Produit 3 -->
-  <div class="product-card">
-    <img class="product-image zoomable" src="https://imgur.com/WnulU2B.jpg" alt="Interrupteur" />
-    <div class="product-name">Kit Interrupteur va-et-vient sans fil</div>
-    <p class="product-price">Prix: <strong>A partir de 10 $</strong></p>
-    <div class="product-desc">La lumière peut être allumée ou éteinte depuis deux endroits différents (en haut et en bas de l'escalier) grâce à des interrupteurs va-et-vient. sans fil.</div>
-  </div>
-
-  <!-- Produit 4 -->
-  <div class="product-card">
-    <img class="product-image zoomable" src="https://imgur.com/CYUFCV5.jpg" alt="Détecteur de gaz" />
-    <div class="product-name">Interrupteur intelligent </div>
-    <p class="product-price">Prix: <strong>A partir de 5 $</strong></p>
-    <div class="product-desc">Ce interrupteur permet le contrôle des modules(lumieres et autres...)</div>
-  </div>
-</div>
-
-<!-- Lightbox (zoom image full screen) -->
-<div class="lightbox" id="lightbox">
-  <img src="" alt="Zoom produit" id="zoomedImage" />
 </div>
 
   <!-- WhatsApp Button -->
@@ -289,43 +315,25 @@
     <h5>&copy; 2025 par GLS SMARTHOME Tous droits réservés.</h5>
   </footer>
 
-  <!-- JS: Image switching and zoom -->
   <script>
-    
-    const sidebar = document.getElementById('sidebar');
-    const hamburger = document.getElementById('hamburgerBtn');
+    function onScrollFadeIn() {
+      const elements = document.querySelectorAll('.fade-in-effect');
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= window.innerHeight - 50) {
+          el.classList.add('visible');
+        }
+      });
+    }
 
-    hamburger.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-    });
-
-    // Optional: click outside sidebar to close (for mobile UX)
-    window.addEventListener('click', (e) => {
-      if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
-        sidebar.classList.remove('open');
-      }
-    });
-
-  const lightbox = document.getElementById('lightbox');
-  const zoomedImage = document.getElementById('zoomedImage');
-  const zoomables = document.querySelectorAll('.zoomable');
-
-  zoomables.forEach(img => {
-    img.addEventListener('click', () => {
-      zoomedImage.src = img.src;
-      lightbox.style.display = 'flex';
-    });
-  });
-
-  lightbox.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-  });
-</script>
+    window.addEventListener('scroll', onScrollFadeIn);
+    window.addEventListener('load', onScrollFadeIn);
 
   </script>
 
 </body>
 </html>
+
 
 
 
