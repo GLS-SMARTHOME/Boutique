@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome to GLS car rental </title>
+  <title>Détail Produit - GLS STORE</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -41,9 +39,15 @@
       text-align: center;
     }
 
-    .icon-left {
-      color: #4CAF50;
-      font-size: 1.5em;
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
     }
 
     .hamburger {
@@ -52,78 +56,86 @@
       cursor: pointer;
     }
 
-    /* Sidebar for mobile */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 220px;
-      height: 100%;
-      background: #fff;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.15);
-      padding-top: 60px;
-      transition: left 0.3s ease;
-      z-index: 1000;
-    }
-
-    .sidebar.open {
-      left: 0;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 15px 20px;
-      color: #333;
-      text-decoration: none;
-      border-bottom: 1px solid #eee;
-    }
-
-    .sidebar a:hover {
-      background-color: #f0f0f0;
-    }
-
-    /* Collection Layout */
-    .collections {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+    /* Product Section */
+    .product-container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
       padding: 20px;
-    }
-
-    .product-card {
-      background: white;
-      border-radius: 8px;
+      border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 300px;
-      padding: 15px;
-      text-align: center;
-      transition: transform 0.2s;
     }
 
-    .product-card:hover {
-      transform: scale(1.03);
-    }
-
-    .product-image {
+    .main-img {
       width: 100%;
-      height: 150px;
+      max-height: 400px;
       object-fit: contain;
-      margin-bottom: 10px;
+      border-radius: 8px;
+      cursor: zoom-in;
+      margin-bottom: 15px;
+      transition: 0.3s;
     }
 
-    .product-name {
+    .thumbnail-container {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .thumbnail-container img {
+      height: 60px;
+      cursor: pointer;
+      border-radius: 6px;
+      border: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .thumbnail-container img:hover,
+    .thumbnail-container img.active {
+      border-color: #4CAF50;
+    }
+
+    .product-title {
+      font-size: 1.5em;
       font-weight: bold;
-      font-size: 1.1em;
-      margin: 10px 0 5px 0;
+      margin-bottom: 10px;
       color: #222;
     }
 
-    .product-desc {
-      font-size: 0.9em;
+    .product-price {
+      font-size: 1.2em;
+      color: #4CAF50;
+      margin-bottom: 15px;
+    }
+
+    .product-description {
+      font-size: 1em;
       color: #555;
-      min-height: 40px;
+      line-height: 1.5;
+    }
+
+    /* Lightbox Zoom */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .lightbox:active {
+      display: none;
     }
 
     /* WhatsApp Floating */
@@ -148,27 +160,6 @@
       background-color: #20b358;
     }
 
-    /* Cart Floating Button */
-    .cart-float {
-      position: fixed;
-      bottom: 150px;
-      right: 20px;
-      background-color: #ff9800;
-      color: white;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 22px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 999;
-    }
-
-    .cart-float:hover {
-      background-color: #e68900;
-    }
     /* Footer */
     footer {
       text-align: center;
@@ -188,79 +179,83 @@
     .social-icons a:hover {
       color: #000;
     }
+
+    @media (max-width: 600px) {
+      .product-title { font-size: 1.3em; }
+      .product-price { font-size: 1.1em; }
+    }
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <i class="fas fa-store icon-left"></i>
-    <div class="header-content">Nos Collections</div>
-    <i class="fas fa-bars hamburger" id="hamburgerBtn"></i>
+    <a href="https://gls-smarthome.github.io/Boutique/Accueil" class="logo-link">
+      <img src="https://imgur.com/hC14VSz.png" alt="GLS Logo" class="logo-img" />
+    </a>
+    <div class="header-content">GLS SMARTHOME</div>
+    <i class="fas fa-bars hamburger"></i>
   </header>
 
-<!-- Sidebar -->
-<div class="sidebar" id="sidebar">
-  <a href="https://glswifi.github.io/kinfood/MainPage">Accueil</a>
-  <a href="https://glswifi.github.io/kinfood/Clothing">Habillement</a>
-  <a href="https://glswifi.github.io/kinfood/Electronic">Électronique</a>
-  <a href="https://glswifi.github.io/kinfood/Contact">Contact</a>
-</div>
-
-  <!-- Main Content -->
-  <div class="collections">
-    <div class="product-card">
-      <a href="https://glswifi.github.io/kinfood/Clothing">
-        <img class="product-image" src="https://i.imgur.com/Tiodx4b.jpg" alt="Habillement" />
-      </a>
-      <div class="product-name">Habillement</div>
-      <div class="product-desc">Les événements les plus formels, costume de ville trois pièces avec une chemise unie et une cravate.</div>
+  <!-- Product Content -->
+  <div class="product-container">
+    <img id="mainImage" src="https://imgur.com/WZEm0xY.jpg" alt="Produit GLS" class="main-img" />
+    
+    <div class="thumbnail-container">
+      <img src="https://imgur.com/WZEm0xY.jpg" alt="thumb1" class="thumb active" />
+      <img src="https://imgur.com/AQLoVfa.jpg" alt="thumb2" class="thumb" />
+      <img src="https://imgur.com/88CGcFG.jpg" alt="thumb3" class="thumb" />
     </div>
 
-    <div class="product-card">
-      <a href="https://glswifi.github.io/kinfood/Electronic">
-        <img class="product-image" src="https://imgur.com/yZoXKyX.jpg" alt="Électronique" />
-      </a>
-      <div class="product-name">Appareils électroniques</div>
-      <div class="product-desc">Télévision, lecteur DVD, appareil photo, ordinateur, téléphone, photocopieur, projecteur…</div>
+    <div class="product-title">Contrôleur Domotique Intelligent</div>
+    <div class="product-price">Prix : 75€</div>
+    <div class="product-description">
+      Automatisez votre maison avec ce contrôleur compatible Wi-Fi, Alexa, et Google Home. Il permet de gérer vos lumières, prises, volets et bien plus. Facile à installer et sécurisé.
     </div>
   </div>
 
-  <!-- Cart Floating Button -->
-  <a class="cart-float" href="https://glswifi.github.io/kinfood/Cart" title="Voir le panier">
-    <i class="fas fa-shopping-cart"></i>
-  </a>
+  <!-- Lightbox for Zoom -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Zoom" id="zoomedImage" />
+  </div>
 
   <!-- WhatsApp Button -->
   <a class="whatsapp-float" href="https://wa.me/243829353222" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-<!-- Footer -->
-<footer>
-  <div class="social-icons">
-    <a href="https://facebook.com/yourpage" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-    <a href="https://instagram.com/yourpage" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://tiktok.com/@yourpage" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-  </div>
-  <h5>&copy; 2025 par GLS SMARTHOME Tous droits réservés.</h5>
-</footer>
+  <!-- Footer -->
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/glssmarthome/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/gls.smarthome2022" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@gls_smarthome" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <h5>&copy; 2025 par GLS SMARTHOME Tous droits réservés.</h5>
+  </footer>
 
-
-  <!-- Sidebar Toggle Script -->
+  <!-- JS: Image switching and zoom -->
   <script>
-    const sidebar = document.getElementById('sidebar');
-    const hamburger = document.getElementById('hamburgerBtn');
+    const mainImage = document.getElementById('mainImage');
+    const thumbnails = document.querySelectorAll('.thumb');
+    const lightbox = document.getElementById('lightbox');
+    const zoomedImage = document.getElementById('zoomedImage');
 
-    hamburger.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        mainImage.src = thumb.src;
+        thumbnails.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+      });
     });
 
-    // Optional: click outside sidebar to close (for mobile UX)
-    window.addEventListener('click', (e) => {
-      if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
-        sidebar.classList.remove('open');
-      }
+    mainImage.addEventListener('click', () => {
+      zoomedImage.src = mainImage.src;
+      lightbox.style.display = 'flex';
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
     });
   </script>
 
